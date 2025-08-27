@@ -3,72 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Шляпний Космос 2000 - Версія 2.0</title>
+    <title>Шляпний Космос 2000 - Версія 3.0</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
+            background-color: #1a1a2e; /* Сучасний космічний фон */
+            color: #E0B0FF; /* М'який фіолетовий */
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Запобігаємо смузі прокрутки від фону */
+        }
+        .background-gif {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6; /* Менша прозорість */
+            pointer-events: none;
             background: url('https://media.tenor.com/DQCLq8TwmEQAAAAC/stars-space.gif') no-repeat center center fixed;
             background-size: cover;
-            color: #00ff00;
-            text-align: center;
-            font-family: 'Inter', sans-serif; /* Новий шрифт */
-            padding: 20px;
-            border: 5px solid blue;
-            animation: border-flash 1s infinite alternate;
         }
-        @keyframes border-flash {
-            from { border-color: blue; }
-            to { border-color: magenta; }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: rgba(26, 26, 46, 0.7); /* Напівпрозора накладка для кращої читабельності */
         }
         .container {
             width: 90%;
             max-width: 800px;
-            margin: 20px auto;
-            border: 3px solid blue;
-            background-color: rgba(195, 218, 249, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px 5px #0000ff;
+            background-color: rgba(30, 30, 50, 0.9);
+            border: 3px solid #8A2BE2; /* Фіолетова рамка */
+            box-shadow: 0 0 20px 5px #8A2BE2;
+            padding: 30px;
+            border-radius: 15px;
+            animation: pulse-border 2s infinite ease-in-out;
+            transform-style: preserve-3d;
+        }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 10px 5px #8A2BE2; }
+            50% { box-shadow: 0 0 25px 10px #FFD700; }
+            100% { box-shadow: 0 0 10px 5px #8A2BE2; }
         }
         h1 {
             font-size: 50px;
             text-transform: uppercase;
-            text-shadow: 3px 3px 3px #ff00ff;
-            font-family: 'Roboto', sans-serif; /* Інший шрифт для заголовка */
+            text-shadow: 3px 3px 5px #FFD700;
+            font-family: 'Roboto', sans-serif;
+            margin-bottom: 10px;
         }
         h2 {
             font-size: 30px;
-            color: #ff00ff;
+            color: #FFD700;
             font-family: 'Roboto', sans-serif;
+            margin-top: 0;
         }
         p {
             font-size: 18px;
-            color: #000;
+            color: #D3D3D3; /* Світло-сірий для читабельності */
+            font-family: 'Inter', sans-serif;
+            margin: 15px 0;
+        }
+        .meme-text {
+            font-size: 2.5rem;
+            color: #00ffff;
+            text-shadow: 2px 2px 2px #ff00ff;
+            animation: meme-bounce 1s infinite;
+        }
+        @keyframes meme-bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
         .button {
             display: inline-block;
-            padding: 15px;
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            border: 3px outset #0000ff;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #00ffff, #ff00ff);
+            border: none;
+            border-radius: 50px;
             font-size: 20px;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
-            color: black;
-            transition: transform 0.2s;
+            color: #1a1a2e;
+            transition: transform 0.2s, box-shadow 0.2s;
             font-family: 'Roboto', sans-serif;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         .button:hover {
-            background: linear-gradient(45deg, #00ffff, #ff00ff);
-            transform: scale(1.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
         .marquee-box {
-            border: 2px dashed #ff00ff;
+            border: 2px solid #FFD700;
             padding: 10px;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 215, 0, 0.2);
             margin-bottom: 20px;
+            border-radius: 8px;
         }
         .gcse-searchbox-only {
             margin-top: 30px;
@@ -82,15 +125,20 @@
     <script async src="https://cse.google.com/cse.js?cx=92bd0bcb0e7284a61"></script>
 </head>
 <body>
+    <div class="background-gif"></div>
+    <div class="overlay"></div>
+
     <div class="container">
-        <h1>🚀 ШЛЯПНИЙ КОСМОС 2000 - Оновлення 🚀</h1>
+        <h1>🚀 ШЛЯПНИЙ КОСМОС 2000 🚀</h1>
         <h2>MSN, але ще "бобровіше"</h2>
 
         <div class="marquee-box">
-            <marquee direction="right">✨ Bober.im! Windows Live! Nokia P50! Наша епопея розширюється! ✨</marquee>
+            <marquee direction="left" scrollamount="6">✨ Bober.im! Windows Live! Nokia P50! Наша епопея розширюється! ✨</marquee>
         </div>
-
+        
         <p>Ква-ква! Гризь-гризь! 🐸🦫</p>
+
+        <p class="meme-text">ВЕНОМЕНАЛЬНО!</p>
 
         <a href="#" class="button" onclick="showDialog()">🔵 Натисни тут, якщо ти справжній бобер! 🔵</a>
 
